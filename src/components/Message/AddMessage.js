@@ -98,30 +98,31 @@ function AddMessage({ channel_id = '' }) {
       return;
     }
 
-    /**
-     * Starting a standup (any message which starts with /standup)
-     */
-    if (message.startsWith('/standup')) {
-      const re = /\/standup\s+([1-9][0-9]*)/;
-      const found = message.match(re);
-      if (!found || found.length < 2) {
-        alert('Usage: /standup <duration in seconds>');
-      } else {
-        var length = parseInt(found[1], 10);
-        if (isNaN(length) || !Number.isInteger(length)) {
-          alert('Usage: /standup <duration in seconds>');
-        } else {
-          axios.post(`/standup/start`, { token, channel_id, length })
-            .then(({ data }) => {
-              const { time_finish } = data;
-              setStandupEndTime(time_finish);
-              alert(`You've started a standup for ${length} seconds`);
-            })
-            .catch((err) => {});
-        }
-      }
-      return;
-    }
+    // TODO(michelle) - enable standup feature
+    // /**
+    //  * Starting a standup (any message which starts with /standup)
+    //  */
+    // if (message.startsWith('/standup')) {
+    //   const re = /\/standup\s+([1-9][0-9]*)/;
+    //   const found = message.match(re);
+    //   if (!found || found.length < 2) {
+    //     alert('Usage: /standup <duration in seconds>');
+    //   } else {
+    //     var length = parseInt(found[1], 10);
+    //     if (isNaN(length) || !Number.isInteger(length)) {
+    //       alert('Usage: /standup <duration in seconds>');
+    //     } else {
+    //       axios.post(`/standup/start`, { token, channel_id, length })
+    //         .then(({ data }) => {
+    //           const { time_finish } = data;
+    //           setStandupEndTime(time_finish);
+    //           alert(`You've started a standup for ${length} seconds`);
+    //         })
+    //         .catch((err) => {});
+    //     }
+    //   }
+    //   return;
+    // }
 
     /**
      * Default message sending behaviour
@@ -159,7 +160,8 @@ function AddMessage({ channel_id = '' }) {
     .catch((err) => {});
   }
 
-  const step = useStep(checkStandupActive, [currentMessage] /* check when user is typing */);
+  // TODO(michelle) - enable standup feature
+  // const step = useStep(checkStandupActive, [currentMessage] /* check when user is typing */);
 
   const keyDown = (e) => {
     if (e.key === 'Enter' && !e.getModifierState('Shift')) {
