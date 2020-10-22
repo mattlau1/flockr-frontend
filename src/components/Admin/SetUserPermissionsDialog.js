@@ -72,7 +72,11 @@ function SetUserPermissionsDialog({ children, ...props }) {
         const permission_id = parseInt(permissionId,10);
 
         axios
-        .post(`/admin/userpermission/change`, { token, u_id, permission_id })
+        .post(`/admin/userpermission/change`, {
+            token,
+            u_id: Number.parseInt(u_id),
+            permission_id: Number.parseInt(permission_id),
+        })
         .then(response => {
             console.log(response);
         })

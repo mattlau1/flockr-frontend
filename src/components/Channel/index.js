@@ -36,7 +36,7 @@ function Channel({ channel_id, ...props }) {
       .get('/channel/details', {
         params: {
           token,
-          channel_id,
+          channel_id: channel_id,
         },
       })
       .then(({ data }) => {
@@ -60,7 +60,7 @@ function Channel({ channel_id, ...props }) {
     axios
       .post('/channel/join', {
         token,
-        channel_id,
+        channel_id: Number.parseInt(channel_id),
       })
       .then(() => {
         fetchChannelData(channel_id, token);
@@ -72,7 +72,7 @@ function Channel({ channel_id, ...props }) {
     axios
       .post('/channel/leave', {
         token,
-        channel_id,
+        channel_id: Number.parseInt(channel_id),
       })
       .then(() => {
         fetchChannelData(channel_id, token);
@@ -84,8 +84,8 @@ function Channel({ channel_id, ...props }) {
     axios
       .post('/channel/addowner', {
         token,
-        channel_id,
-        u_id,
+        channel_id: Number.parseInt(channel_id),
+        u_id: Number.parseInt(u_id),
       })
       .then(() => {
         fetchChannelData(channel_id, token);
@@ -97,8 +97,8 @@ function Channel({ channel_id, ...props }) {
     axios
       .post('/channel/removeowner', {
         token,
-        channel_id,
-        u_id,
+        channel_id: Number.parseInt(channel_id),
+        u_id: Number.parseInt(u_id),
       })
       .then(() => {
         fetchChannelData(channel_id, token);

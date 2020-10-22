@@ -27,7 +27,7 @@ function MessagePin({
     if (isPinned) {
       axios.post(`/message/unpin`, {
         token,
-        message_id,
+        message_id: Number.parseInt(message_id),
       })
       .then(() => {
         step();
@@ -35,7 +35,7 @@ function MessagePin({
     } else {
       axios.post(`/message/pin`, {
         token,
-        message_id,
+        message_id: Number.parseInt(message_id),
       })
       .then(() => {
         step();

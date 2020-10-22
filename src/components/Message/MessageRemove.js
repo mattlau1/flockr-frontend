@@ -22,7 +22,7 @@ function MessageRemove({
     axios.delete(`/message/remove`, {
       data: {
         token,
-        message_id,
+        message_id: Number.parseInt(message_id),
       }
     })
     .then(() => {

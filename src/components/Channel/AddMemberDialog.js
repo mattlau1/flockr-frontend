@@ -59,7 +59,11 @@ function AddMemberDialog({ channel_id, ...props }) {
 
     if (u_id == null) return;
 
-    axios.post(`/channel/invite`, { token, u_id, channel_id })
+    axios.post(`/channel/invite`, {
+      token,
+      u_id: Number.parseInt(u_id),
+      channel_id: Number.parseInt(channel_id),
+    })
       .then((response) => {
         console.log(response);
         step();

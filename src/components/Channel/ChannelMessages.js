@@ -26,7 +26,7 @@ function ChannelMessages({ channel_id = '' }) {
   const token = React.useContext(AuthContext);
 
   const fetchChannelMessages = () => {
-    const p = pagination.channelId === channel_id
+    const p = pagination.chajonnelId === channel_id
         ? pagination
         : {
           "channelId": channel_id,
@@ -39,7 +39,7 @@ function ChannelMessages({ channel_id = '' }) {
         .get('/channel/messages', {
           params: {
             token,
-            channel_id,
+            channel_id: Number.parseInt(channel_id),
             start: p.isPaginating ? p.currentStart : 0,
           },
         })

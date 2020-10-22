@@ -31,7 +31,7 @@ function MessageEdit({
             axios.delete(`/message/remove`, {
                 data: {
                     token,
-                    message_id,
+                    message_id: Number.parseInt(message_id),
                 }
             })
             .then(() => {
@@ -45,7 +45,7 @@ function MessageEdit({
          */
         axios.put(`/message/edit`, {
             token,
-            message_id,
+            message_id: Number.parseInt(message_id),
             message,
         })
         .then(() => {

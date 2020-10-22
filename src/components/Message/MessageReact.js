@@ -25,7 +25,7 @@ function MessageReact({
     if (is_reacted) {
       axios.post(`/message/unreact`, {
         token,
-        message_id,
+        message_id: Number.parseInt(message_id),
         react_id: 1 /* FIXME */,
       })
       .then(() => {
@@ -34,7 +34,7 @@ function MessageReact({
     } else {
       axios.post(`/message/react`, {
         token,
-        message_id,
+        message_id: Number.parseInt(message_id),
         react_id: 1 /* FIXME */,
       })
       .then(() => {

@@ -60,10 +60,10 @@ function Profile({ profile }) {
     axios
       .post(`/user/profile/uploadphoto`, { token,
         img_url: items[0],
-        x_start: items[1],
-        y_start: items[2],
-        x_end: items[3],
-        y_end: items[4],
+        x_start: Number.parseInt(items[1]),
+        y_start: Number.parseInt(items[2]),
+        x_end: Number.parseInt(items[3]),
+        y_end: Number.parseInt(items[4]),
       })
       .then(() => {
         console.log('all good');

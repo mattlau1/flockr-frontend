@@ -69,7 +69,7 @@ function AddMessage({ channel_id = '' }) {
     if (standupRemaining && standupRemaining > 0) {
       axios.post(`/standup/send`, {
         token,
-        channel_id,
+        channel_id: Number.parseInt(channel_id),
         message,
       })
         .then(({ data }) => {
@@ -86,7 +86,7 @@ function AddMessage({ channel_id = '' }) {
     if (isTimerSet) {
       axios.post(`/message/sendlater`, {
         token,
-        channel_id,
+        channel_id: Number.parseInt(channel_id),
         message,
         time_sent: (currentTimer.getTime() / 1000), // ms to s conversion
       })
@@ -112,7 +112,11 @@ function AddMessage({ channel_id = '' }) {
     //     if (isNaN(length) || !Number.isInteger(length)) {
     //       alert('Usage: /standup <duration in seconds>');
     //     } else {
-    //       axios.post(`/standup/start`, { token, channel_id, length })
+    //       axios.post(`/standup/start`, {
+    //         token,
+    //         channel_id: Number.parseInt(channel_id),
+    //         length,
+    //       })
     //         .then(({ data }) => {
     //           const { time_finish } = data;
     //           setStandupEndTime(time_finish);
@@ -129,7 +133,7 @@ function AddMessage({ channel_id = '' }) {
      */
     axios.post(`/message/send`, {
       token,
-      channel_id,
+      channel_id: Number.parseInt(channel_id),
       message,
     })
       .then(({ data }) => {
