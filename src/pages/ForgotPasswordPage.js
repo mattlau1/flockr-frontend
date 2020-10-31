@@ -81,6 +81,9 @@ function ForgotPasswordPage(props) {
                     type="email"
                     autoFocus
                 />
+                {!window.LOCAL_ENV && <div className="password-warning">
+                  Note: Emails may not successfully reach all UNSW email addresses. For best chances, use an address ending with @ad.unsw.edu.au
+                </div>}
                 <Button type="submit" fullWidth variant="contained" color="primary">
                   Send Recovery Email
                 </Button>

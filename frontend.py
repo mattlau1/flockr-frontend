@@ -4,6 +4,7 @@ from flask import Flask, send_from_directory
 
 if len(sys.argv) == 2:
     f = open('prebundle/config.js', 'w')
+    f.write('var LOCAL_ENV = true\n')
     f.write('var BACKEND_PORT = ' + str(sys.argv[1]))
     f.close()
 
