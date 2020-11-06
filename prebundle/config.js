@@ -1,2 +1,1 @@
-var LOCAL_ENV = true
 var BACKEND_PORT = 5000
