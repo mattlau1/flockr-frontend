@@ -26,9 +26,8 @@ function Search({ query_str, ...props }) {
         })
         .then(({ data }) => {
             const { messages } = data;
-            if (typeof messages !== "undefined" && !Array.isArray(messages)) {
-                setMessages(messages)
-            }
+            if (typeof messages !== "undefined" && !Array.isArray(messages)) return;
+            setMessages(messages);
             setLoading(false);
         })
         .catch((err) => {
